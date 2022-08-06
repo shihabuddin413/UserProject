@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+User:{{name}}
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 ">
+    <h4 class="bg-light p-2">Beyond Native User Info</h4>
+    <form action="/user/{{name}}" method="post">
+        {% csrf_token %}
+        <div class="m-2">
+            <small class="bg-light rounded ">Name</small>
+            <input type="text" name="name" value="{{ name }}" placeholder="Name" class="form-control" disabled>
+        </div>
+        <div class="m-2">
+            <small class="bg-light rounded ">Age</small>
+            <input type="number" name="age" value="{{ age }}" placeholder="Age" class="form-control">
+        </div>
+        <div class="m-2">
+            <small class="bg-light rounded ">Carrer Industry</small>
+            <input style="text-transform: uppercase;" type="text" name="carrerIndustry" value="{{ carrerIndustry }}"
+                placeholder="Carrer Industry" class="form-control">
+        </div>
+
+        <button style="margin-left: 40%;" class='btn btn-primary' type="submit">Save</button>
+    </form>
+</div>
+
+{% endblock content %}

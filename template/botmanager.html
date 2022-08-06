@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Hey! Bot Manager:{{name}}
+{% endblock title %}
+
+{% block content %}
+<h2 class="mb-3">Beyond Native Dashboard</h2>
+<hr />
+<div>
+    <div class="mb-2 bg-light d-flex justify-content-around align-items-center">
+        <p class="m-0 p-2" style="width:50%;">Bot Manager </p>
+        <p class="bg-primary m-0 p-2" style="width:50%; color:white;">{{ name }}</p>
+    </div>
+    <div class="mb-2 bg-light d-flex justify-content-around align-items-center">
+        <p class="m-0 p-2" style="width:50%;">Active Ads </p>
+        <p class="bg-primary m-0 p-2" style="width:50%; color:white;">{{ activeAds }}</p>
+    </div>
+    <div class="mb-2 bg-light d-flex justify-content-around align-items-center">
+        <p class="m-0 p-2" style="width:50%;">Subscription </p>
+        <p class="bg-primary m-0 p-2" style="width:50%; color:white;">{{ subscription }}</p>
+    </div>
+
+</div>
+<h5>Bot List</h5>
+<hr />
+{% for bot in bots %}
+<div class="py-2 m-2 bg-light">
+    <span class="bg-black text-white rounded p-2">Bot Id {{ bot.id }}</span>
+    <span>{{ bot.botName }}</span>
+</div>
+
+{% endfor %}
+<hr />
+
+<p class="text-small text-grayish">*** To Add advertisment Go to Talent Native & Try Purchase a plan, if plan is
+    activated than use
+    the bot webform to create a add
+</p>
+
+{% endblock content %}

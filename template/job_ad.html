@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %} Job Ad :{{ job_id }} {% endblock title %}
+
+{% block content %}
+
+
+
+<form class="form-inline" action="/job/{{ job_manager }}/{{ job_id }}" method="POST">
+    {% csrf_token %}
+    <section>
+
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-12 col-xl-11">
+
+                <div class="p-md-2">
+                    <div class="row justify-content-center">
+
+                        <div class="text-center bg-white fw-bold mb-1 mx-1 mx-md-2 mt-1">
+                            <p class=" p-2 rounded h1 ">Job Ad Form</p>
+                            <p class="text-black">
+                                <span class=" text-grayish">current ad</span>
+                                <span class="bg-light p-2 rounded ">job/{{ job_id }}</span>
+                            </p>
+                        </div>
+
+
+                        <tr>
+                            <td>
+                                <input type="text" name="job_title" class="form-control my-2" value="{{ job_title }}"
+                                    placeholder="Job Title" maxlength="100" required id="id_job_title">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="job_location" value="{{job_location}}"
+                                    class="form-control my-2" placeholder="Job Location " maxlength="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" name="working_hours" value="{{ working_hours}}"
+                                    class="form-control" placeholder="Working Hours" maxlength="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="job_description" cols="40" rows="2" class="form-control my-2"
+                                    placeholder="job description here" required
+                                    id="id_job_description">{{ job_description }}</textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="number" name="job_vacancy" class="form-control my-2"
+                                    value="{{job_vacancy}}" placeholder="Number of vacancey" required
+                                    id="id_job_vacancy">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if job_type %}
+                                <span class="bg-light p-2 rounded m-1">Job Type</span>
+                                <span>{{ job_type }}</span>
+                                {% else %}
+                                <select name="job_type" class="form-select mb-2" id="id_job_type">
+                                    <option value="Freelancing">Job Type </option>
+                                    <option value="Freelancing">Freelancing</option>
+                                    <option value="Contactual">Contactual</option>
+                                    <option value="empolyee">As an regular empolyee</option>
+                                    <option value="Other">Others</option>
+                                </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if job_industry %}
+                                <span class="bg-light p-2 rounded m-1">Carrer industry</span>
+                                <span>{{ job_industry }}</span>
+                                {% else %}
+                                <select name="job_industry" class="form-select" id="id_job_industry">
+                                    <option value="industry">Select Job Carrer industry</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Automobile">Automobile</option>
+                                    <option value="Corporate">Corporate</option>
+                                    <option value="Bank">Bank</option>
+                                </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            {% if max_salary %}
+                            <span class="bg-light p-2 rounded m-1">Salary Range</span>
+                            <span>{{ min_salary }} - {{ max_salary }} $sgd</span>
+                            {% else %}
+
+                            <td style="display:flex">
+                                <input type="number" name="salaryMax" class="form-control my-2"
+                                    placeholder="Max Salary">
+                                <input type="number" name="salaryMin" class="form-control my-2"
+                                    placeholder="Min Salary">
+                            </td>
+                            {% endif %}
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if job_pay_rate_type %}
+                                <span class="bg-light p-2 rounded m-1">Paying intervel</span>
+                                <span>{{ job_pay_rate_type }}</span>
+                                {% else %}
+                                <select name="job_pay_rate_type" class="form-select my-2" id="id_job_pay_rate_type">
+                                    <option value="Yearly">Per Hour</option>
+                                    <option value="Freelancing">Freelancing</option>
+                                    <option value="Contactual">Contactual</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if required_job_experince %}
+                                <span class="bg-light p-2 rounded m-1">Experience</span>
+                                <span>{{ required_job_experince }} Years or More</span>
+                                {% else %}
+                                <select name="required_job_experince" class="form-select"
+                                    id="id_required_job_experince">
+                                    <option> Select Experience </option>
+                                    <option value="1">1 years</option>
+                                    <option value="2">2 years</option>
+                                    <option value="3">3+ years</option>
+                                    <option value="5">5+ years </option>
+                                    <option value="10">10+ years </option>
+                                </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if require_job_skill %}
+                                <span class="bg-light p-2 rounded m-1">Job Skills</span>
+                                <span>{{ require_job_skill }}</span>
+                                {% else %}
+                                <select name="require_job_skill" class="form-select my-2" id="id_require_job_skill">
+                                    <option value="none"> job skill </option>
+                                    <option value="get_ui_designer">Ui designer</option>
+                                    <option value="developer"> Developer</option>
+                                    <option value="site_engineer">site engineer</option>
+                                </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        {% if showSave %}
+                        <input class="btn btn-primary mt-3" name="submit" type="submit" value="Save">
+                        {% endif %}
+                        {% if showApply %}
+                        <input class="form-control" name="email_or_phone" type="text"
+                            placeholder="Enter Your Email Or Phone Number">
+                        <input class="btn btn-danger mt-3" name="submit" type="submit" value="Apply">
+                        {% endif %}
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</form>
+
+{% endblock content %}

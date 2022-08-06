@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 text-center">
+
+<i class="fa-solid fa-box-open " style="font-size:80px; color:#faa952"></i>
+
+<p class=" h2 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+    Welcome <span class="text-primary"> {{username}} </span>!
+</p>
+<p class="h4">
+    {{ msg }}
+</p>
+<p> <a class="btn btn-primary" href="{{ link }}" target="_new" />Bot Link</a> </p>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Great! Applications successful {% endblock title %}
+
+{% block content %}
+<h4 class="bg-light text-center py-3 rounded mb-3">Applications Status</h4>
+<p class="text-success text-center py-3 border border-grayish">
+    Hello, <span class="bg-light text-primary p-1 rounded border border-grayish"> {{ address }} </span><br /> your
+    application successful &
+    sent for
+    review !
+    we'll contact
+    you soon.
+</p>
+
+<div class="text-white bg-danger text-center">
+    {% if msg %}
+    <span>{{ msg }}</span>
+    {% else %}
+    <span>please close this window & wait for confirmation.</span>
+    {% endif %}
+</div>
+{% endblock content %}

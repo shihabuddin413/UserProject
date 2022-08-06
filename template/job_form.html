@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+    Job Application Form
+</p>
+{% if error %}
+    <div class="alert alert-danger">
+        {{ error }}   
+    </div>
+{% endif %}
+
+{% if success %}
+    
+    <div class="alert alert-success my-2">
+        {{ success }}   
+    </div>
+
+    <div>
+        Mainwhile, only if you're a Admin ... 
+        <a style="width: 200px!important;" class="btn btn-primary my-2" href="/admin/">Check All Applications</a>
+    </div>
+{% endif %}
+
+<form class="form-inline" action="/store-job-application-form/" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    {% if form %}
+        <input class="btn btn-primary mt-3" type="submit" value="Save">
+    {% endif %}   
+</form>
+   
+{% endblock content %}
+    
